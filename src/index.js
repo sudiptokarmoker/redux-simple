@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import {createStore} from 'redux';
 import allReducers from './reducers';
+import { Provider } from 'react-redux';
+
 // just done this basic setup
 const store = createStore(allReducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
@@ -48,7 +50,9 @@ store.dispatch(increment()); // 18.44
 // DISPATCH -> this will just execute the ACTION. and according the ACTION reducer will called and the value / state will be updated at store. very very simple
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
